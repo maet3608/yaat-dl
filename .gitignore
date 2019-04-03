@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+.idea/
+cache_*/
+*.py[cod]
+*$py.class
+*.pkl
+*.Identifier
