@@ -116,6 +116,11 @@ class ImageViewer(ttk.Frame):
             if self.annos:
                 self.canvas.delete(self.annos.pop())
 
+    def clear_anno(self):
+        for anno in self.annos:
+            self.canvas.delete(anno)
+        self.annos = []
+
     def load_image(self, path=None):
         if not path:
             filetypes = (("jpeg files", "*.jpg"), ("all files", "*.*"))
@@ -123,6 +128,7 @@ class ImageViewer(ttk.Frame):
                                               title="Select file",
                                               filetypes=filetypes)
         print("loading image", path)
+        self.clear_anno()
         self.image = Image.open(path).convert('RGB')
         self.width, self.height = self.image.size
         self.scale = 3.0  # initial img scale

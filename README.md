@@ -14,8 +14,11 @@ Yet another image annotation tool for machine/deep learning
     - shape (rect, circle)
     - color (htmL)
     - label (string)
+    - icon (filepath)
   - image folder
-  - table path  
+  - annotation table path  
+  
+- create labeling menu from config  
     
 - persistence
   - store in CSV/pandas table    
