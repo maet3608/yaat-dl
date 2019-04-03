@@ -1,7 +1,15 @@
 import tkinter as tk
 
 from tkinter import ttk, filedialog
-from PIL import Image, ImageTk, ImageDraw
+from PIL import Image, ImageTk
+
+
+def center_window(root, size=0.7):
+    sw, sh = root.winfo_screenwidth(), root.winfo_screenheight()
+    w, h = int(sw * size), int(sh * size)
+    x = int((sw - w) / 2)
+    y = int((sh - h) / 2)
+    root.geometry("{}x{}+{}+{}".format(w, h, x, y))
 
 
 class AutoScrollbar(ttk.Scrollbar):
@@ -25,7 +33,7 @@ class ImageViewer(ttk.Frame):
     def __init__(self, root):
         ttk.Frame.__init__(self, master=root)
         self.master.title('YAAT')
-        self.master.geometry('800x500')
+        center_window(root)
 
         root.config(menu=self.create_menu(root))
 
@@ -81,8 +89,8 @@ class ImageViewer(ttk.Frame):
     def on_button_release(self, event):
         # self.canvas.delete(self.rect)
         if self.oid:
-            x1,y1,x2,y2 = self.canvas.coords(self.oid)
-            print(self.coords_img(x1,y1), self.coords_img(x2,y2))
+            x1, y1, x2, y2 = self.canvas.coords(self.oid)
+            print(self.coords_img(x1, y1), self.coords_img(x2, y2))
             self.annos.append(self.oid)
             self.oid = None
 
